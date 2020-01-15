@@ -4,7 +4,7 @@
 # def make_a_new_movie_instance    # def make_a_new_movie_instance
 #   movie = __                     #   movie = Movie.new
 # end                              # end
-require 'pry'
+
 def can_be_instantiated_and_then_saved
   movie = Movie.new
   movie.title = "This is a title."
@@ -27,12 +27,10 @@ def can_be_created_in_a_block(args = {title: "Home Alone", release_date: 1990})
   # If no arguments are passed, use default values:
   # title == "Home Alone"
   # release_date == 1990
+  
   Movie.create do |m|
     m.title = args[:title]
     m.release_date = args[:release_date]
-    m.director = args[:director]
-    m.lead = args[:lead]
-    m.in_theaters = args[:in_theaters]
   end
 end
 
@@ -49,8 +47,7 @@ def can_get_size_of_the_database
 end
 
 def can_find_the_first_item_from_the_database_using_id
-  new = Movie.find(1)
-  new
+  Movie.find(1)
 end
 
 def can_find_by_multiple_attributes
@@ -93,8 +90,7 @@ end
 
 def can_destroy_a_single_item
   Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
-  new = Movie.find_by(title: "That One Where the Guy Kicks Another Guy Once")
-  new.destroy
+  Movie.find_by(title: "That One Where the Guy Kicks Another Guy Once").destroy
 end
 
 def can_destroy_all_items_at_once
