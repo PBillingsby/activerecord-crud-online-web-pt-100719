@@ -20,7 +20,7 @@ def can_be_created_with_a_hash_of_attributes
       lead: "Paul Newman",
       in_theaters: false
   }
-  movie = Movie.find_or_create_by(attributes)
+  movie = Movie.create(attributes)
 end
 
 def can_be_created_in_a_block(args = {title: "Home Alone", release_date: 1990})
@@ -35,11 +35,11 @@ def can_be_created_in_a_block(args = {title: "Home Alone", release_date: 1990})
 end
 
 def can_get_the_first_item_in_the_database
-  Movie.all.first
+  Movie.first 
 end
 
 def can_get_the_last_item_in_the_database
-  Movie.all.last
+  Movie.last 
 end
 
 def can_get_size_of_the_database
@@ -69,7 +69,6 @@ def can_be_found_updated_and_saved
   Movie.create(title: "Awesome Flick")
   new = Movie.find_by(title: "Awesome Flick")
   new.update(title: "Even Awesomer Flick")
-  new.save
   new
 end
 
@@ -85,6 +84,7 @@ def can_update_multiple_items_at_once
   5.times do |i|
     Movie.create(title: "Movie_#{i}", release_date: 2000+i)
   end
+
   Movie.update(title: "A Movie")
 end
 
